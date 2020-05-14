@@ -1,10 +1,17 @@
 import React from 'react';
 
-function App() {
+import Shell from './components/Shell';
+import WelcomeDialog from './components/WelcomeDialog';
 
+import './App.scss';
+
+function App() {
 	return (
-		<div className="App">
-			Hello World
+		<div className="app-root">
+			<Shell />
+			<WelcomeDialog />
+			<div className="app-content">
+			</div>
 		</div>
 	);
 }
