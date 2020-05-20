@@ -1,0 +1,15 @@
+.add-dialog {
+	max-width: 500px;
+	width: 100%;
+	margin: auto;
+}
+
+// make the dialog card expand to 100%
+.add-dialog .MuiPaper-root {
+	width: 100%;
+}
+
+// make each of our form elements expand to 100%
+.add-form .MuiFormControl-root {
+	width: 100%;
+}
