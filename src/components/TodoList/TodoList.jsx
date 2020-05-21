@@ -21,9 +21,20 @@ function TodoList() {
 				id: Date.now(),
 				name: name,
 				position: todos.reduce((max, t) => t.position > max ? t.position : max, 0) + 1,
+				toggleTime: Date.now(),
 				complete: false,
 			}
 		]);
+	};
+
+	const toggleTodo = (id) => {
+		let newTodos = [ ...todos ];
+		const todoIndex = newTodos.findIndex(t => t.id === id);
+
+		newTodos[todoIndex].complete = !newTodos[todoIndex].complete;
+		newTodos[todoIndex].toggleTime = Date.now();
+
+		setTodos(newTodos);
 	};
 
 	return (
@@ -34,8 +45,17 @@ function TodoList() {
 				<CardContent>
 					<List>
 						{ (todos && todos.length > 0) &&
-							todos.sort((a, b) => a.position - b.position)
-							.map(todo => <TodoListItem key={todo.id} todo={todo} />)
+							todos.filter(t => !t.complete).sort((a, b) => a.position - b.position)
+							.map(todo => <TodoListItem key={todo.id} todo={todo} toggleTodo={toggleTodo} />)
+						}
+						{ (todos.filter(t => !t.complete).length > 0 && todos.filter(t => t.complete).length > 0) &&
+							<ListItem dense>
+								<hr className="divider" />
+							</ListItem>
+						}
+						{ (todos && todos.filter(t => t.complete).length > 0) &&
+							todos.filter(t => t.complete).sort((a, b) => b.toggleTime - a.toggleTime)
+							.map(todo => <TodoListItem key={todo.id} todo={todo} toggleTodo={toggleTodo} />)
 						}
 						{ (!todos || todos.length < 1) &&
 							<ListItem>

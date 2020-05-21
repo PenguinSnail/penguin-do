@@ -7,10 +7,19 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import './TodoListItem.scss';
 
 function TodoListItem(props) {
-	const { todo, onClick } = props;
+	const { todo, toggleTodo } = props;
+
+	const onClick = () => {
+		toggleTodo(todo.id);
+	};
 
 	return (
-		<ListItem dense button onClick={onClick}>
+		<ListItem
+			dense
+			button
+			onClick={onClick}
+			className="todo-list-item"
+		>
 			<ListItemIcon>
 				<Checkbox
 				checked={todo.complete}
@@ -19,7 +28,13 @@ function TodoListItem(props) {
 				disableRipple
 				/>
 			</ListItemIcon>
-			<ListItemText className="todo-list-item-text" primary={todo.name} />
+			<ListItemText
+				className="todo-list-item-text"
+				primary={
+					<div className={todo.complete ? 'strikethrough-div' : ''}>
+						{todo.name}
+					</div>}
+			/>
 			<ListItemSecondaryAction>
 				<IconButton>
 					<MoreVertIcon />
