@@ -12,7 +12,7 @@ import './TodoList.scss';
 
 function TodoList() {
 	const [ addOpen, setAddOpen ] = useState(false);
-	const [ todos, setTodos ] = useLocalState([]);
+	const [ todos, setTodos ] = useLocalState([], 'todos');
 
 	const addTodo = (name) => {
 		setTodos([
