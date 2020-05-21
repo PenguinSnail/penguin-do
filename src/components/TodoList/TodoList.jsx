@@ -27,6 +27,10 @@ function TodoList() {
 		]);
 	};
 
+	const deleteTodo = (id) => {
+		setTodos(todos.filter(t => t.id !== id));
+	};
+
 	const toggleTodo = (id) => {
 		let newTodos = [ ...todos ];
 		const todoIndex = newTodos.findIndex(t => t.id === id);
@@ -46,7 +50,14 @@ function TodoList() {
 					<List>
 						{ (todos && todos.length > 0) &&
 							todos.filter(t => !t.complete).sort((a, b) => a.position - b.position)
-							.map(todo => <TodoListItem key={todo.id} todo={todo} toggleTodo={toggleTodo} />)
+							.map(todo => (
+								<TodoListItem
+									key={todo.id}
+									todo={todo}
+									toggleTodo={toggleTodo}
+									deleteTodo={deleteTodo}
+								/>
+							))
 						}
 						{ (todos.filter(t => !t.complete).length > 0 && todos.filter(t => t.complete).length > 0) &&
 							<ListItem dense>
@@ -55,7 +66,14 @@ function TodoList() {
 						}
 						{ (todos && todos.filter(t => t.complete).length > 0) &&
 							todos.filter(t => t.complete).sort((a, b) => b.toggleTime - a.toggleTime)
-							.map(todo => <TodoListItem key={todo.id} todo={todo} toggleTodo={toggleTodo} />)
+							.map(todo => (
+								<TodoListItem
+									key={todo.id}
+									todo={todo}
+									toggleTodo={toggleTodo}
+									deleteTodo={deleteTodo}
+								/>
+							))
 						}
 						{ (!todos || todos.length < 1) &&
 							<ListItem>
