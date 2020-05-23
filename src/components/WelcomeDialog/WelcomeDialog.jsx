@@ -1,5 +1,5 @@
 import React from 'react';
-import useWelcomed from '../../hooks/useWelcomed';
+import useLocalState from '../../hooks/useLocalState';
 
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
@@ -7,7 +7,7 @@ import { Typography } from '@material-ui/core';
 import './WelcomeDialog.scss';
 
 function WelcomeDialog() {
-	const [ welcomed, setWelcomed ] = useWelcomed();
+	const [ welcomed, setWelcomed ] = useLocalState(false, 'welcomed');
 
 	return (
 		<Dialog className="welcome-dialog" open={!welcomed}>

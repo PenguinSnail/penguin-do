@@ -51,7 +51,8 @@ function TodoListItem(props) {
 					primary={
 						<div className={todo.complete ? 'strikethrough-div' : ''}>
 							{todo.name}
-						</div>}
+						</div>
+					}
 				/>
 				<ListItemSecondaryAction edge="end">
 					<IconButton

@@ -1,6 +1,6 @@
 {
   "short_name": "Penguin Do",
-  "name": "A simple timer app",
+  "name": "A simple todo app",
   "icons": [
   ],
   "start_url": ".",
