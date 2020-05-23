@@ -38,6 +38,7 @@ function AddTodoDialog(props) {
 							// register the input with the form hook
 							// set this as a required field
 							inputRef={register({ required: true })}
+							autoFocus
 						/>
 						{errors.name && (
 							<FormHelperText id="name-errors">Invalid name</FormHelperText>

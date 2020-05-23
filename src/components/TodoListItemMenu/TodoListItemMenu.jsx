@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Menu, MenuItem } from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 import './TodoListItemMenu.scss';
 
@@ -20,7 +21,7 @@ function TodoListItemMenu(props) {
 			open={Boolean(anchorEl)}
 			onClose={handleClose}
 		>
-			<MenuItem onClick={onDelete}>Delete</MenuItem>
+			<MenuItem onClick={onDelete}><DeleteIcon className="menu-item-icon" />Delete</MenuItem>
 		</Menu>
 	);
 };
