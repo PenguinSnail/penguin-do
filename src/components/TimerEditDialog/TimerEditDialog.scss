@@ -1,0 +1,16 @@
+.interval-dialog {
+	max-width: 350px;
+	width: 100%;
+	margin: auto;
+}
+
+// make the dialog card expand to 100%
+.interval-dialog .MuiPaper-root {
+	width: 100%;
+}
+
+// make each of our form elements expand to 100%
+.interval-form .MuiFormControl-root {
+	width: 100%;
+	margin: 5px auto;
+}

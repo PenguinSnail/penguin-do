@@ -3,6 +3,7 @@ import React from 'react';
 import Shell from './components/Shell';
 import WelcomeDialog from './components/WelcomeDialog';
 
+import Timer from './components/Timer';
 import TodoList from './components/TodoList';
 
 import './App.scss';
@@ -13,7 +14,12 @@ function App() {
 			<Shell />
 			<WelcomeDialog />
 			<div className="app-content">
-				<TodoList />
+				<div className="todo-list-component">
+					<TodoList />
+				</div>
+				<div className="timer-component">
+					<Timer />
+				</div>
 			</div>
 		</div>
 	);

@@ -1,5 +1,38 @@
 .app-content {
+	// use flex and wrap child elements
+	display: flex;
+	flex-wrap: wrap-reverse;
+	// center child elements
+	justify-content: center;
+	// don't get wider than 900px
+	max-width: 900px;
+	// add some padding to the edges
 	padding: 1rem;
-	max-width: 600px;
+	// auto margin to center on the page
 	margin: auto;
+}
+
+// add some margin to the main elements
+.app-content > * {
+	margin: 10px 10px 30px;
+}
+
+.timer-component {
+	// grow to one part wide
+	flex-grow: 1;
+	// allow shrinking if needed
+	flex-shrink: 1;
+	// \/ don't use - flex can't shrink past a min-width
+	// no less than 250px wide before wrap
+	//min-width: 250px;
+}
+
+.todo-list-component {
+	// grow to two parts wide
+	flex-grow: 2;
+	// allow shrinking if needed
+	flex-shrink: 1;
+	// \/ don't use - flex can't shrink past a min-width
+	// no less than 400px wide before wrap
+	//min-width: 400px;
 }
