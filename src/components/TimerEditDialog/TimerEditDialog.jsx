@@ -9,14 +9,14 @@ import './TimerEditDialog.scss';
 
 function TimerEditDialog(props) {
 	const { open, close, timeIntervals, updateTimeIntervals } = props;
-	const { register, handleSubmit, errors, formState: { isValid } } = useForm({
+	const { register, handleSubmit, errors, formState: { isValid }, reset } = useForm({
 		// start validating all inputs immediately
 		mode: 'onChange',
 		// focus errors on submit
 		submitFocusError: true,
 		defaultValues: {
-			work: timeIntervals.work,
-			break: timeIntervals.break
+			work: timeIntervals.work / 60,
+			break: timeIntervals.break / 60
 		}
 	});
 
@@ -25,11 +25,16 @@ function TimerEditDialog(props) {
 	};
 
 	const onSave = (data) => {
-		updateTimeIntervals(data.work, data.break);
+		// update the saved time intervalse
+		updateTimeIntervals(data.work * 60, data.break * 60);
+		// close the dialog
 		close();
+		// reset the form with new defaults
+		reset({
+			work: data.work,
+			break: data.break
+		});
 	};
-
-	console.log(errors)
 
 	return (
 		<Dialog className="interval-dialog" open={open}>
@@ -37,7 +42,7 @@ function TimerEditDialog(props) {
 				<DialogTitle>Edit Timer</DialogTitle>
 				<DialogContent>
 					<FormControl error={errors.work}>
-						<InputLabel htmlFor="work">Work Time (seconds)</InputLabel>
+						<InputLabel htmlFor="work">Work Time (minutes)</InputLabel>
 						<Input
 							id="work"
 							name="work"
@@ -59,7 +64,7 @@ function TimerEditDialog(props) {
 						)}
 					</FormControl>
 					<FormControl error={errors.break}>
-						<InputLabel htmlFor="break">Break Time (seconds)</InputLabel>
+						<InputLabel htmlFor="break">Break Time (minutes)</InputLabel>
 						<Input
 							id="break"
 							name="break"
