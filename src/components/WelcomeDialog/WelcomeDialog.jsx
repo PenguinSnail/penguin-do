@@ -15,12 +15,12 @@ function WelcomeDialog() {
 			<DialogContent>
 				<Typography gutterBottom={true}>
 					Penguin Do is a simple web-based timer application,
-					designed to keep you accountable for your tasks!
+					designed to keep you accountable for your tasks.
 				</Typography>
 				<Typography>
 					Unlike most tools that are just todo lists or just timers,
 					Penguin Do combines the two, allowing you to prioritize
-					your tasks and run a timer with built in breaks!
+					your tasks and run a timer with built in breaks.
 				</Typography>
 			</DialogContent>
 			<DialogActions>

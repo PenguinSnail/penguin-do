@@ -9,6 +9,15 @@ import TodoList from './components/TodoList';
 import './App.scss';
 
 function App() {
+	// if the browser supports notifications
+	if (('Notification' in window)) {
+		// if we don't already have notification permission
+		if (Notification.permission !== 'denied') {
+			// try requesting permission from the user
+			Notification.requestPermission();
+		}
+	}
+
 	return (
 		<div className="app-root">
 			<Shell />

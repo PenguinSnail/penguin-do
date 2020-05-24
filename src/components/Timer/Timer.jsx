@@ -36,7 +36,34 @@ function Timer() {
 
 	usePreciseTimer((elapsedSeconds) => {
 		const newTime = (Math.round(time - elapsedSeconds) > 0) ? Math.round(time - elapsedSeconds) : 0;
-		if (newTime === 0) setRunning(false);
+
+		if (newTime === 0) {
+			// stop the timer
+			setRunning(false);
+			// if the browser supports notifications
+			if (('Notification' in window)) {
+				// if we have permission already
+				if (Notification.permission === 'granted') {
+					// send the notification
+					new Notification('Penguin Do', {
+						body: 'Your ' + (phase ? 'break' : 'work') + ' phase is up!'
+					});
+				// else if we don't already have permission
+				} else if (Notification.permission !== 'denied') {
+					// try requesting permission from the user
+					Notification.requestPermission().then(permission => {
+						// if we got permission
+						if (permission === 'granted') {
+							// send the notification
+							new Notification('Penguin Do', {
+								body: 'Your ' + (phase ? 'break' : 'work') + ' phase is up!'
+							});
+						}
+					});
+				}
+			}
+		}
+
 		setTime(newTime);
 	}, 1000, (running && time > 0));
 
