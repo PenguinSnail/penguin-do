@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Shell from './components/Shell';
-import WelcomeDialog from './components/WelcomeDialog';
 
 import Timer from './components/Timer';
 import TodoList from './components/TodoList';
@@ -21,7 +20,6 @@ function App() {
 	return (
 		<div className="app-root">
 			<Shell />
-			<WelcomeDialog />
 			<div className="app-content">
 				<div className="todo-list-component">
 					<TodoList />

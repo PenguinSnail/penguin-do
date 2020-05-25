@@ -7,9 +7,3 @@ test('renders and includes the title', () => {
 	const title = app.getByText('Penguin Do');
 	expect(title).toBeInTheDocument();
 });
-
-test('renders welcome dialog', () => {
-	const app = render(<App />);
-	const dialog = app.getByRole('dialog');
-	expect(dialog).toBeInTheDocument();
-});
